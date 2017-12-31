@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>User</title>
+</head>
+<body>
+
+<h2>User <p th:text="${user.username}"></p></h2>
+
+<form th:action="@{/user/addItem}" th:object="${item}" method="post">
+    <div><label> Item: <input type="text" name="name"/> </label></div>
+    <div><label> Description: <input type="text" name="description"/> </label></div>
+    <div><label> Address: </label> </div>
+    <div><label> Street: <input type="text" name="address.street"/> </label></div>
+    <div><label> City:   <input type="text" name="address.city"/> </label></div>
+    <div><label> State:  <input type="text" name="address.state"/> </label></div>
+    <div><label> Zip:    <input type="text" name="address.zip"/> </label></div>
+    <div><input type="submit" value="Add item"/></div>
+</form>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Code</th>
+    </tr>
+    <tr th:each="item,iterationStatus  : ${items}">
+        <td>
+            <a th:href="@{'/item/' + ${item.code}}" th:text="${iterationStatus.count}">a</a>
+        </td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.code}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function loadMap() {
+
+            var mapOptions = {
+                center:new google.maps.LatLng(50.0807650, 14.4143272),
+                zoom:14
+            }
+
+            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(50.0807650, 14.4143272),
+                map: map,
+                animation:google.maps.Animation.Drop
+            });
+            /*
+            var circle = new google.maps.Circle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map,
+                center: new google.maps.LatLng(50.0807650, 14.4143272),
+                radius: 114
+            });
+            */
+        }
+    </script>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&amp;"></script>-->
+    <script src = "https://maps.googleapis.com/maps/api/js"></script>
+</head>
+
+<body onload = "loadMap()">
+<div id = "sample" style = "width:580px; height:400px;"></div>
+</body>
+
+</html>
