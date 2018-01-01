@@ -1,6 +1,9 @@
 package com.colo.controller;
 
+import com.colo.forms.LoginForm;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +13,7 @@ import java.util.List;
 public class HelloController {
 
     @RequestMapping("/")
-    public String index() {
+    public String index(@ModelAttribute LoginForm loginForm) {
         return "homepage";
     }
 
