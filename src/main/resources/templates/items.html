@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Colo registration</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>User</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
 </head>
 <body>
+<div class="container">
+    <div class="list-group">
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Code</th>
+            </tr>
+            <tr th:each="item,iterationStatus  : ${items}" class="list-group-item list-group-item-action">
+                <td th:text="${iterationStatus.count}">1</td>
+                <td th:text="${item.name}">001</td>
+                <td th:text="${item.description}">Name</td>
+                <td th:text="${item.code}">City</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-<table>
-    <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Code</th>
-    </tr>
-    <tr th:each="item,iterationStatus  : ${items}">
-        <td th:text="${iterationStatus.count}">1</td>
-        <td th:text="${item.name}">001</td>
-        <td th:text="${item.description}">Name</td>
-        <td th:text="${item.code}">City</td>
-    </tr>
-</table>
-
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

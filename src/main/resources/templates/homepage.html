@@ -1,46 +1,100 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>CSS test</title>
+    <title>Colo login</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css"
+          href="../../css/normalize.css" />
 
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" th:href="@{/css/main.css}"
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css"
           href="../../css/main.css" />
-
 </head>
 <body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Spring Boot</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-inverse col-md-9 border-top-0 navbar-toggleable-sm">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav form-inline container-fluid">
+            <li class="nav-item container-fluid dropdown"><a class="nav-link" data-toggle="dropdown" href="">Login</a>
+                <div class="dropdown-menu" id="loginmenu">
+                    <form class="px-4 py-3" th:action="@{/login}" th:object="${loginForm}" method="post">
+                        <div class="form-group">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input type="text" class="form-control" id="exampleDropdownFormEmail1" th:field="*{username}" placeholder="example"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" th:field="*{password}" placeholder="*******"/>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck"/>
+                            <label class="form-check-label" for="dropdownCheck">
+                                Remember me
+                            </label>
+                        </div>
+                        <button type="submit" value="Submit" class="btn btn-primary">Sign in</button>
+                        <button type="reset" value="Reset" class="btn">Reset</button>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="./registration">New around here? Sign up</a>
+                    <a class="dropdown-item" href="#">Forgot password?</a>
+                </div>
+            </li>
+            <span>&#124;</span>
+            <li class="nav-item container-fluid"><a class="nav-link" href="./items">List</a></li>
+            <span>&#124;</span>
+            <li class="nav-item container-fluid"><a class="nav-link" href="#column1">Our Vision</a></li>
+            <span>&#124;</span>
+            <li class="nav-item container-fluid"><a class="nav-link" href="#column2">Plan</a></li>
+        </ul>
     </div>
 </nav>
 
-<div class="container">
-
-    <div class="starter-template">
-        <h1>Colo 21</h1>
-        <h2>
-            <span th:text="'Message: ' + ${message}"></span>
-        </h2>
-    </div>
-
+<div class="container container1" id="join">
+    <h1>Thanks for joining!</h1>
 </div>
-<!-- /.container -->
 
-<script type="text/javascript"
-        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container container2 row">
+    <div  id="column1" class="col-sm-6">
+        <h1>Our Vision</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis molestie turpis, a aliquet velit lacinia sit amet. Pellentesque auctor nulla ut est egestas malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam bibendum vulputate lectus, sit amet auctor velit convallis vel. Aenean commodo tincidunt pellentesque. Vestibulum at lobortis ipsum. Aliquam laoreet, orci vel finibus suscipit, mauris arcu pellentesque lectus, eget varius tellus elit eget nisl. Aenean aliquam congue volutpat. In eget pulvinar lacus. Donec ut interdum turpis, quis fringilla magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ultrices dui placerat blandit sodales. Morbi iaculis semper dolor non mollis. Fusce suscipit sit amet nisi in bibendum. Nulla facilisi.</p>
+    </div>
+    <div id="column2" class="col-sm-6">
+        <h1>Plan</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis molestie turpis, a aliquet velit lacinia sit amet. Pellentesque auctor nulla ut est egestas malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam bibendum vulputate lectus, sit amet auctor velit convallis vel. Aenean commodo tincidunt pellentesque. Vestibulum at lobortis ipsum. Aliquam laoreet, orci vel finibus suscipit, mauris arcu pellentesque lectus, eget varius tellus elit eget nisl. Aenean aliquam congue volutpat. In eget pulvinar lacus. Donec ut interdum turpis, quis fringilla magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ultrices dui placerat blandit sodales. Morbi iaculis semper dolor non mollis. Fusce suscipit sit amet nisi in bibendum. Nulla facilisi.</p>
+    </div>
+</div>
 
+<div class="header footer">2018 - Copyright 	&copy; Colo</div>
+
+<!--
+<h1>Form</h1>
+<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    <p>Id: <input type="text" th:field="*{id}" /></p>
+    <p>Message: <input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,7 +1,80 @@
-h1{
-    color:#0000FF;
+.nav, .navbar, .footer {
+    background-color: #989898;
+    display: block;
+    max-width: 100%;
+    padding: 0;
+    color: #fff;
+   font-family: Asphaltic Scratch Rounded Perso, Capture Smallz Clean,/* In Collection,*/ sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-h2{
-    color:#FF0111;
+.navbar {
+    padding: 10px;
 }
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFFFFF;
+}
+
+.navbar ul li{
+   list-style-type: none;
+}
+
+.footer{
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+#main-img {
+    max-height: 50px;
+    padding: 0;
+}
+
+.container1 { 
+    padding: 0;
+    width: 100%;
+    margin-top: -20px;
+    background: url('images/background1500.png');
+    text-align: center;
+}
+
+.container1 h1{
+    padding: 125px 0px 50px 0px;
+    color: yellow;
+    font-size: 4em;
+}
+
+input[type=text]{
+    width: 400px;
+    max-width: 80%;
+}
+
+.container1 button {
+    color: #fff;
+    font-size: 1.4em;
+    padding: 0 60px 0 60px;
+    margin: 10px 0 200px 0;
+    background-color: yellow;
+}
+
+.container2{
+    margin: 0 auto;
+}
+
+.container2 h1{
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.navbar-toggler-right {
+    padding: 10px; 
+}
+
+.nav-item {font-size: 1.7rem;
+color: #fff !important;
+}
+
+/*.img-fluid{
+   margin-right: 250px;
+}*/
