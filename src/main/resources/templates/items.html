@@ -23,12 +23,14 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Code</th>
+                <th>Type</th>
             </tr>
             <tr th:each="item,iterationStatus  : ${items}" class="list-group-item list-group-item-action">
                 <td th:text="${iterationStatus.count}">1</td>
                 <td th:text="${item.name}">001</td>
                 <td th:text="${item.description}">Name</td>
                 <td th:text="${item.code}">City</td>
+                <td class = "type" th:text="${item?.type}">Type</td>
             </tr>
         </table>
     </div>

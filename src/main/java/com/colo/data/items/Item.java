@@ -23,6 +23,7 @@ public class Item {
     private int code;
     private String name;
     private String description;
+    private String type;
     @ManyToOne
     private User owner;
     @OneToOne
@@ -98,5 +99,13 @@ public class Item {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

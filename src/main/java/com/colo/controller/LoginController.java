@@ -5,6 +5,7 @@ import com.colo.data.users.User;
 import com.colo.data.users.UserValidator;
 import com.colo.forms.LoginForm;
 import com.colo.mail.MailSender;
+import com.colo.repository.RoleRepository;
 import com.colo.service.SecurityService;
 import com.colo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,16 +35,7 @@ public class LoginController {
     @Autowired private SecurityService securityService;
     @Autowired private UserValidator userValidator;
     @Autowired private MailSender mailSender;
-
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public String login(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, Model model) {
-//        if (securityService.autologin(loginForm.getUsername(), loginForm.getPassword())) {
-////            model.add
-////            result.reject("authentication.failed");
-//            return "login";
-//        }
-//        return "result";
-//    }
+    @Autowired private RoleRepository roleRepository;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -59,11 +51,14 @@ public class LoginController {
             return "registration";
         }
         Set<Role> roles = new HashSet<>();
-        roles.add(new Role("user"));
+        Role role = new Role("USER");
+        roles.add(role);
+        roleRepository.save(role);
         userForm.setRoles(roles);
+        userForm.setEnabled(true);
         userService.save(userForm);
         securityService.autologin(userForm.getUsername(), userForm.getPassword());
-        mailSender.sendNewUserMail(userForm.getEmailAddress());
+//        mailSender.sendNewUserMail(userForm.getEmailAddress());
         return "redirect:/user";
     }
 
@@ -87,5 +82,15 @@ public class LoginController {
         return "login";
     }
 
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//    public String login(Model model, String error, String logout) {
+//        if (error != null)
+//            model.addAttribute("error", "Your username and password is invalid.");
+//
+//        if (logout != null)
+//            model.addAttribute("message", "You have been logged out successfully.");
+//
+//        return "login";
+//    }
 
 }

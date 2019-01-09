@@ -43,7 +43,7 @@
 </nav>
 
 <div class="container container1" id="join">
-    <h1><p th:text="${user.username}"></p></h1>
+    <h1><p th:text="${user?.username}"></p></h1>
 </div>
 
 <form th:action="@{/user/addItem}" th:object="${item}" method="post">
@@ -72,7 +72,7 @@
 <table>
     <tr>
         <th></th>
-        <th>Name</th>
+        <th>Nameee</th>
         <th>Description</th>
         <th>Code</th>
     </tr>

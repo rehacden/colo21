@@ -57,11 +57,13 @@ Item
             <th>Name</th>
             <th>Description</th>
             <th>Code</th>
+            <th>Type</th>
         </tr>
         <tr>
             <td th:text="${item.name}">001</td>
             <td th:text="${item.description}">Name</td>
             <td th:text="${item.code}">City</td>
+            <td th:text="${item?.type}">Type</td>
         </tr>
     </table>
 
@@ -79,7 +81,7 @@ Item
             var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
         };
     </script>
-    <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAorGLsXj9yZ4zwoqG-8g5f6WJ5Js4MPeY"></script>
+    <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDs5yeccWfb643FuMmFjzMiVY-LX-ncHpE"></script>
 </div>
 
 Map

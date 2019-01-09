@@ -15,7 +15,7 @@ import java.io.IOException;
 @Service
 public class GoogleApiService {
 
-    private static final String API_KEY = "AIzaSyAorGLsXj9yZ4zwoqG-8g5f6WJ5Js4MPeY";
+    private static final String API_KEY = "AIzaSyDs5yeccWfb643FuMmFjzMiVY-LX-ncHpE";
 
     public LatLng getLocation(String address) throws InterruptedException, ApiException, IOException {
         GeoApiContext context = new GeoApiContext.Builder()
